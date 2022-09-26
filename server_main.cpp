@@ -1,7 +1,9 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-
+#include <stdio.h>
+#include <stdlib.h>
+//#include <errno.h>
 int main()
 {
     int sock, listener;
@@ -43,7 +45,7 @@ int main()
             send(sock, buf, bytes_read, 0);
         }
     
-        close(sock);
+        //close(sock);
     }
     
     return 0;
