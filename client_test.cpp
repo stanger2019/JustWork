@@ -3,8 +3,9 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
-char message[] = "Hello there!\n";
-char buf[1024];
+#include"data.h"
+
+char buf[1048576];
 
 int main()
 {

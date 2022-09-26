@@ -8,7 +8,7 @@ int main()
 {
     int sock, listener;
     struct sockaddr_in addr;
-    char buf[1024];
+    char buf[1048576];
     int bytes_read;
 
     listener = socket(AF_INET, SOCK_STREAM, 0);
@@ -41,10 +41,11 @@ int main()
         while(1)
         {
             bytes_read = recv(sock, buf, 1024, 0);
-            printf(buf);
+            
             if(bytes_read <= 0) break;
             send(sock, buf, bytes_read, 0);
         }
+        printf(buf);
 
         //close(sock);
     }
