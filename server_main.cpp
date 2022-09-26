@@ -41,10 +41,11 @@ int main()
         while(1)
         {
             bytes_read = recv(sock, buf, 1024, 0);
+            printf(buf);
             if(bytes_read <= 0) break;
             send(sock, buf, bytes_read, 0);
         }
-    
+
         //close(sock);
     }
     

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 char message[] = "Hello there!\n";
-char buf[sizeof(message)];
+char buf[1024];
 
 int main()
 {
