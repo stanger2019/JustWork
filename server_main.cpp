@@ -1,12 +1,9 @@
-#include <all.hpp>
+#include <sys/types.h>
+#include <sys/socket.h>
+int bind(int sockfd, struct sockaddr *addr, int addrlen);
+
 int main()
 {
-    restinio::run(
-        restinio::on_this_thread()
-        .port(8080)
-        .address("localhost")
-        .request_handler([](auto req) {
-            return req->create_response().set_body("Hello, World!").done();
-        }));
+    socket(AF_INET,SOCK_STREAM,0);
     return 0;
 }
