@@ -1,11 +1,11 @@
+//тестовый клиент
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include"data.h"
-
-char buf[1048576];
+#include <iostream>
+using namespace std;
+char message[] = "Hello there!\n";
+char buf[sizeof(message)];
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
     }
 
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(3425); // или любой другой порт...
+    addr.sin_port = htons(3425); 
     addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
     if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0)
     {
