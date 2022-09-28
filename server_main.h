@@ -26,7 +26,12 @@ class Network{//класс основной сетевой работы.
         void bind_check(int obj){//проверка на ошибки настройки подключений
             if(obj = 0){
                 Errs err(2);            
-                }
+            }
+        }
+        void accept_check (int obj){
+            if(sock < 0){
+                Errs err(3);
+            }
         }
     public:
     void main(){//функция основного цикла сетевой работы
@@ -36,12 +41,7 @@ class Network{//класс основной сетевой работы.
     {
         cout<<"1"<<endl;//отладочный вывод
         sock = accept(listener, NULL, NULL);//перевод подключения на отдельный идентификатор
-        /*if(sock < 0)              /*
-        {
-            cerr<<"accept";
-            exit(3);
-        }*/
-
+        accept_check(sock);
         while(1)//цикл работы с клиентом
         {
             cout<<"2"<<endl;//отладочный вывод
