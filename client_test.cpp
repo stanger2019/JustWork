@@ -3,15 +3,25 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <iostream>
+#include<string>
+#include<cstring>
 using namespace std;
-char message[] = "Hello there!\n";
-char buf[sizeof(message)];
+string inputString;
+
+char *stringToCharArray(string inputString){
+    int n = inputString.length();
+    char inputCharArrey[n+1];
+    strcpy(inputCharArrey,inputString.c_str());
+    return inputCharArrey;
+}
 
 int main()
 {
+    string inputString;
     int sock;
     struct sockaddr_in addr;
-
+    char buf[1024];
+    cin>>inputString;
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if(sock < 0)
     {
@@ -28,10 +38,15 @@ int main()
         exit(2);
     }
 
-    send(sock, message, sizeof(message), 0);
-    recv(sock, buf, sizeof(message), 0);
+    send(sock, stringToCharArray(inputString), sizeof(stringToCharArray(inputString)), 0);
+    recv(sock, buf, sizeof(stringToCharArray(inputString)), 0);
     
-    printf(buf);
+    for (int i = 0; i < 1024;i++)
+    {
+        cout<<buf[i]<<endl;
+    }
+    
+    
     //close(sock);
 
     return 0;

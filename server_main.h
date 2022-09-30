@@ -45,9 +45,10 @@ class Network{//класс основной сетевой работы.
         while(1)//цикл работы с клиентом
         {
             cout<<"2"<<endl;//отладочный вывод
-            bytes_read = recv(sock, data, 1024, 0);//чтение входящий информации с сокета
+            bytes_read = recv(sock, data, 1024, 0);//чтение входящий информации с сокетa
             if(bytes_read <= 0) break;
             send(sock, data, bytes_read, 0);//отправка информации клиенту
+            
         }
     }
     }
