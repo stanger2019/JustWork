@@ -25,14 +25,14 @@ int main()
     cout<<inet_ntoa(addr.sin_addr)<<endl;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(2000); // или любой другой порт...
-    if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+    int z = connect(sock, (struct sockaddr *)&addr, sizeof(addr));
+    if(z < 0)
     {
         perror("connect");
         exit(2);
     }
-
+    
     send(sock, message, sizeof(message), 0);
-    recv(sock, buf, sizeof(message), 0);
     
     printf(buf);
     //close(sock);

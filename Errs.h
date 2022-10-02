@@ -24,6 +24,12 @@ class Errs{//класс - обработчик ошибок
                 case 5:
                     err_str = "hostconstructing by name failed";//ошибка получения хостконструкта по имени
                 break;
+                case 6:
+                    err_str = "net_sending error";
+                break;
+                case 7:
+                    err_str = "net_reading error";
+                break;
                 default://прочие ошибки
                     err_str = "unknown_err";
                 break;

@@ -6,7 +6,7 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include"errs.h"
+#include"Errs.h"
 #define ADR 101
 #define NAME 100
 using namespace std;
