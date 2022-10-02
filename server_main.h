@@ -40,12 +40,15 @@ class Network{//класс основной сетевой работы.
          while(true)//цикл ожидания входящего подключения 
     {
         cout<<"1"<<endl;//отладочный вывод
-        sock = accept(listener, NULL, NULL);//перевод подключения на отдельный идентификатор
+        sockaddr* client;
+        sock = accept(listener,0,0);//перевод подключения на отдельный идентификатор
+
         accept_check(sock);
         while(1)//цикл работы с клиентом
         {
             cout<<"2"<<endl;//отладочный вывод
             bytes_read = recv(sock, data, 1024, 0);//чтение входящий информации с сокетa
+            cout<<data;
             if(bytes_read <= 0) break;
             send(sock, data, bytes_read, 0);//отправка информации клиенту
             
